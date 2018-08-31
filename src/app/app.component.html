@@ -1,0 +1,5 @@
+<div *ngFor="let pose of poses$ | async">
+  <h3>{{ pose.name }}</h3>
+  <p *ngIf="pose.sanskrit">{{ pose. sanskrit }}</p>
+  <img [src]="pose.imageUrl" [alt]="pose.name">
+</div>
