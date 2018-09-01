@@ -1,3 +1,5 @@
+<input [formControl]="searchControl" placeholder="Search">
+
 <div *ngFor="let pose of poses$ | async">
   <h3>{{ pose.name }}</h3>
   <p *ngIf="pose.sanskrit">{{ pose. sanskrit }}</p>
