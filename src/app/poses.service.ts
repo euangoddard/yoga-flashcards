@@ -36,9 +36,10 @@ export class PosesService {
   }
 
   search(query: string): Observable<Poses> {
+    const startsWithQuery = query.split(' ', 1)[0] + '*';
     let results: Index.Result[] = [];
     try {
-      results = this.idx.search(query);
+      results = this.idx.search(`${query} ${startsWithQuery}`);
     } catch (error) {
       if (error instanceof QueryParseError) {
         results = [];
@@ -77,7 +78,7 @@ export interface Pose {
   imageUrl: string;
 }
 
-type Poses = ReadonlyArray<Pose>;
+export type Poses = ReadonlyArray<Pose>;
 
 interface PoseById {
   [id: string]: Pose;

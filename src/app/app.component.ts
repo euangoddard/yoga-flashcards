@@ -1,38 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { PosesService, Pose } from './poses.service';
 import { Observable } from 'rxjs';
-import { debounceTime, distinctUntilChanged, mergeMap } from 'rxjs/operators';
 
 @Component({
   selector: 'yoga-flashcards',
   templateUrl: './app.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   readonly poses$: Observable<ReadonlyArray<Pose>>;
-  readonly searchControl: FormControl;
 
-  constructor(
-    private posesService: PosesService,
-    private formBuilder: FormBuilder,
-  ) {
+  constructor(private posesService: PosesService) {
     this.poses$ = this.posesService.all();
-    this.searchControl = this.formBuilder.control('');
-  }
-
-  ngOnInit(): void {
-    this.searchControl.valueChanges
-      .pipe(
-        debounceTime(100),
-        distinctUntilChanged(),
-        mergeMap(query => this.posesService.search(query)),
-      )
-      .subscribe(results => {
-        console.log(results);
-      });
-  }
-
-  search(query: string): void {
-    this.posesService.search(query);
   }
 }
