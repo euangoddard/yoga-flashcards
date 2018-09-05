@@ -1,0 +1,14 @@
+<ng-container *ngIf="poses?.length">
+  <div>
+    Left
+    <ng-container *ngTemplateOutlet="poseTemplate; context: {pose: leftPose}"></ng-container>
+  </div>
+  <div>
+    Middle
+    <ng-container *ngTemplateOutlet="poseTemplate; context: {pose: midPose}"></ng-container>
+  </div>
+  <div>
+    Right
+    <ng-container *ngTemplateOutlet="poseTemplate; context: {pose: rightPose}"></ng-container>
+  </div>
+</ng-container>
