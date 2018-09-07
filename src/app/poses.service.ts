@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, ReplaySubject } from 'rxjs';
-import { take, map } from 'rxjs/operators';
+import { Injectable } from '@angular/core';
 import * as lunr from 'lunr';
 import { Index, QueryParseError } from 'lunr';
+import { Observable, ReplaySubject } from 'rxjs';
+import { map, pluck, take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -12,21 +12,19 @@ export class PosesService {
   private idx!: Index;
   private posesSubject = new ReplaySubject<Poses>(1);
   private poseByIdSubject = new ReplaySubject<PoseById>(1);
-  private isInitialized = false;
 
   constructor(private http: HttpClient) {
     this.loadData();
 
-    const poses$ = this.all()
+    this.all()
       .pipe(take(1))
       .subscribe(poses => {
         this.idx = lunr(function() {
           this.field('name');
           this.field('sanskrit');
-
-          poses.forEach((pose, index) => {
-            this.add({ ...pose, id: index });
-          });
+          for (const pose of poses) {
+            this.add(pose);
+          }
         });
       });
   }
@@ -59,13 +57,13 @@ export class PosesService {
 
   private loadData(): void {
     this.http
-      .get<Pose[]>('/assets/poses.json')
-      .pipe(take(1))
+      .get<PoseReponse>('/assets/poses.json')
+      .pipe(take(1), pluck<PoseReponse, Poses>('poses'))
       .subscribe(poses => {
         this.posesSubject.next(poses);
         const poseById: PoseById = {};
-        poses.forEach((pose, index) => {
-          poseById[`${index}`] = pose;
+        poses.forEach(pose => {
+          poseById[pose.id] = pose;
         });
         this.poseByIdSubject.next(poseById);
       });
@@ -73,6 +71,7 @@ export class PosesService {
 }
 
 export interface Pose {
+  id: string;
   name: string;
   sanskrit?: string;
   imageUrl: string;
@@ -82,4 +81,8 @@ export type Poses = ReadonlyArray<Pose>;
 
 interface PoseById {
   [id: string]: Pose;
+}
+
+interface PoseReponse {
+  poses: Poses;
 }
