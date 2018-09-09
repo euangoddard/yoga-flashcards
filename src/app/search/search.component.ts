@@ -1,12 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
-import {
-  debounceTime,
-  distinctUntilChanged,
-  map,
-  mergeMap,
-  startWith,
-} from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, map, mergeMap } from 'rxjs/operators';
 import { PosesService, Poses } from '../poses.service';
 import { Observable } from 'rxjs';
 
@@ -16,23 +10,29 @@ import { Observable } from 'rxjs';
 })
 export class SearchComponent {
   readonly searchControl: FormControl;
-  readonly results$: Observable<Poses>;
-  readonly noResults$: Observable<boolean>;
+  readonly search$: Observable<SearchResults>;
 
-  constructor(
-    private posesService: PosesService,
-    private formBuilder: FormBuilder,
-  ) {
+  constructor(private posesService: PosesService, private formBuilder: FormBuilder) {
     this.searchControl = this.formBuilder.control('');
-    this.results$ = this.searchControl.valueChanges.pipe(
+    this.search$ = this.searchControl.valueChanges.pipe(
+      map(s => s.trim()),
       debounceTime(100),
       distinctUntilChanged(),
-      mergeMap(query => this.posesService.search(query)),
-      startWith([]),
+      mergeMap(query => {
+        return this.posesService.search(query).pipe(
+          map(results => {
+            return { query, results };
+          }),
+        );
+      }),
     );
-    this.noResults$ = this.results$.pipe(map(r => !r.length));
   }
   search(query: string): void {
     this.posesService.search(query);
   }
+}
+
+interface SearchResults {
+  query: string;
+  results: Poses;
 }

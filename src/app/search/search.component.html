@@ -1,11 +1,13 @@
 <input [formControl]="searchControl" placeholder="Search">
 
-<div class="search-results">
-  <div class="search-result" *ngFor="let result of results$ | async">
+<div class="search-results" *ngIf="search$ | async as search">
+  <div class="search-result" *ngFor="let result of search.results">
     <h3>{{ result.name }}</h3>
     <h4>{{ result.sanskrit || 'N/A' }}</h4>
   </div>
-  <div class="search-results--empty" *ngIf="noResults$ | async">
-    No matches for <em>{{ searchControl.valueChanges | async }}</em>
+
+  <div class="search-results--empty" *ngIf="!search.results.length && search.query">
+    No matches for <em>{{ search.query }}</em>
   </div>
+
 </div>
