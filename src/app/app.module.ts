@@ -1,3 +1,4 @@
+import { PosesComponent } from './poses/poses.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -6,19 +7,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SearchComponent } from './search/search.component';
 import { PoseComponent } from './pose/pose.component';
-import { PosesControlsComponent } from './poses/poses-controls/poses-controls.component';
-import { PosesDirective } from './poses/poses.directive';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SearchComponent,
-    PoseComponent,
-    PosesControlsComponent,
-    PosesDirective,
-  ],
+  declarations: [AppComponent, SearchComponent, PoseComponent, PosesComponent],
   imports: [BrowserModule, HttpClientModule, ReactiveFormsModule],
-  entryComponents: [PosesControlsComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

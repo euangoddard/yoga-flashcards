@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+yf-poses,
+yf-pose {
+  display: block;
+}
+
+.poses-slider {
+  overflow: hidden;
+}
+
+.poses-wrapper {
+  transform: translateX(-1 * percentage(1/3));
+  display: flex;
+}
