@@ -1,17 +1,9 @@
 {
-    "extends": "../tslint.json",
-    "rules": {
-        "directive-selector": [
-            true,
-            "attribute",
-            "yf",
-            "camelCase"
-        ],
-        "component-selector": [
-            true,
-            "element",
-            "yf",
-            "kebab-case"
-        ]
-    }
+  "extends": "../tslint.json",
+  "rules": {
+    "directive-selector": [true, "attribute", "yf", "camelCase"],
+    "component-selector": [true, "element", "yf", "kebab-case"],
+    "no-output-rename": false,
+    "no-input-rename": false
+  }
 }

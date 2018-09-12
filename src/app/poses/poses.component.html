@@ -1,8 +1,7 @@
-{{ width$ | async }}
-<div class="poses-slider" *ngIf="width$ | async as width">
+<div class="poses-slider" *ngIf="width$ | async as width" [class.poses-slider--dragging]="isDragging">
   <div class="poses-wrapper" [style.width.px]="3 * width">
-    <div *ngFor="let pose of activePoses$ | async" [style.width.px]="width">
-      <yf-pose [pose]="pose"></yf-pose>
+    <div class="poses-track" [style.transform]="transform">
+      <yf-pose [pose]="pose" *ngFor="let pose of activePoses$ | async" [style.width.px]="width"></yf-pose>
     </div>
   </div>
 </div>

@@ -1,13 +1,39 @@
+$width-cap: 800px;
+
 yf-poses,
 yf-pose {
   display: block;
 }
 
+yf-poses {
+  max-width: $width-cap;
+  margin: 0 auto;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.16), 0 6px 12px rgba(0, 0, 0, 0.32);
+}
+
 .poses-slider {
   overflow: hidden;
+  cursor: grab;
+}
+.poses-slider--dragging {
+  user-select: none;
+  cursor: grabbing;
 }
 
 .poses-wrapper {
   transform: translateX(-1 * percentage(1/3));
+}
+
+.poses-track {
   display: flex;
+  will-change: transform;
+}
+
+yf-pose {
+  text-align: center;
+  border-right: 1px solid gray;
+
+  &:last-child {
+    border-right: none;
+  }
 }
