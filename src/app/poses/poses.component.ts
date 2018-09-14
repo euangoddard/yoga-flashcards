@@ -1,42 +1,34 @@
-import { debounceTime, startWith } from 'rxjs/operators';
 import {
-  Component,
-  Input,
-  SimpleChanges,
-  OnChanges,
-  ElementRef,
-  OnInit,
-  OnDestroy,
-  ChangeDetectorRef,
   AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
   HostListener,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  SimpleChanges,
 } from '@angular/core';
-import { Poses, Pose } from '../poses.service';
-import { Subject, fromEvent, BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, fromEvent, Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 import { takeUntilDestroy } from 'take-until-destroy';
-
-const FRICTION = 0.95;
-const STOP_THRESHOLD = 0.3;
+import { Poses } from '../poses.service';
 
 @Component({
   selector: 'yf-poses',
   templateUrl: './poses.component.html',
 })
 export class PosesComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy {
-  @Input('poses')
-  allPoses!: Poses;
-  @Input()
-  index!: number;
+  @Input('poses') allPoses!: Poses;
+  @Input() index!: number;
 
   private readonly element: HTMLElement;
 
   isDragging = false;
   private offsetX = 0;
   private lastPointerX = 0;
-  private animationId = -1;
-  private trackingPoints: ReadonlyArray<TrackingPoint> = [];
-  private isDecelerating = false;
-  private decVelX = 0;
+  private queuedOffsets: number[] = [];
 
   private readonly activePosesSubject = new Subject<Poses>();
   readonly activePoses$ = this.activePosesSubject.asObservable();
@@ -51,10 +43,7 @@ export class PosesComponent implements OnInit, AfterViewInit, OnChanges, OnDestr
 
   ngOnInit(): void {
     fromEvent(window, 'resize')
-      .pipe(
-        debounceTime(250),
-        takeUntilDestroy(this),
-      )
+      .pipe(debounceTime(250), takeUntilDestroy(this))
       .subscribe(() => this.updateWidth());
   }
 
@@ -83,17 +72,16 @@ export class PosesComponent implements OnInit, AfterViewInit, OnChanges, OnDestr
     this.changeDetectorRef.detectChanges();
   }
 
-  @HostListener('mouseup', ['$event'])
-  @HostListener('mouseleave', ['$event'])
-  @HostListener('touchend', ['$event'])
-  @HostListener('touchcancel', ['$event'])
-  @HostListener('touchleave', ['$event'])
-  stopDrag(event: TouchEvent | MouseEvent) {
-    const pageX = getXFromEvent(event);
+  @HostListener('mouseup')
+  @HostListener('mouseleave')
+  @HostListener('touchend')
+  @HostListener('touchcancel')
+  @HostListener('touchleave')
+  stopDrag() {
     this.isDragging = false;
     this.lastPointerX = 0;
     this.changeDetectorRef.detectChanges();
-    this.startDeceleration();
+    this.snapToPose();
   }
 
   @HostListener('mousemove', ['$event'])
@@ -103,8 +91,6 @@ export class PosesComponent implements OnInit, AfterViewInit, OnChanges, OnDestr
       return;
     }
     const pageX = getXFromEvent(event);
-
-    this.addTrackingPoint(pageX);
     const deltaX = pageX - this.lastPointerX;
     this.lastPointerX = pageX;
     this.updateOffset(deltaX);
@@ -136,52 +122,28 @@ export class PosesComponent implements OnInit, AfterViewInit, OnChanges, OnDestr
     this.changeDetectorRef.detectChanges();
   }
 
-  private addTrackingPoint(x: number) {
-    const time = Date.now();
-    const trackingPoints = [...this.trackingPoints];
-    while (trackingPoints.length > 0) {
-      if (time - trackingPoints[0].time <= 100) {
-        break;
-      }
-      trackingPoints.shift();
+  private snapToPose() {
+    const width = this.widthSubject.getValue();
+    const snapToOffset = width * Math.round(this.offsetX / width);
+
+    const pointCount = 15;
+    const stepX = (snapToOffset - this.offsetX) / pointCount;
+    const queuedOffsets = [];
+    for (let i = 0; i < pointCount; ++i) {
+      queuedOffsets.push(snapToOffset - Math.round(i * stepX));
     }
-    trackingPoints.push({ x, time });
-    this.trackingPoints = trackingPoints;
+    this.queuedOffsets = queuedOffsets;
+    console.log(this.queuedOffsets);
+    requestAnimationFrame(this.animateToSnappedPose.bind(this));
   }
 
-  // Deceleration
-  startDeceleration(): void {
-    const firstPoint = this.trackingPoints[0];
-    const lastPoint = this.trackingPoints[this.trackingPoints.length - 1];
-
-    const xOffset = lastPoint.x - firstPoint.x;
-    const timeOffset = lastPoint.time - firstPoint.time;
-
-    const D = timeOffset / 15;
-
-    this.decVelX = xOffset / D || 0; // prevent NaN
-
-    if (Math.abs(this.decVelX) > 1) {
-      this.isDecelerating = true;
-      requestAnimationFrame(this.stepDeceleration.bind(this));
-    } else {
-      this.isDecelerating = false;
+  private animateToSnappedPose(): void {
+    const point = this.queuedOffsets.pop()!;
+    if (this.queuedOffsets.length) {
+      requestAnimationFrame(this.animateToSnappedPose.bind(this));
     }
-  }
-
-  stepDeceleration() {
-    if (!this.isDecelerating) {
-      return;
-    }
-
-    const decVelX = this.decVelX * FRICTION;
-    if (Math.abs(decVelX) > STOP_THRESHOLD) {
-      this.updateOffset(decVelX);
-      requestAnimationFrame(this.stepDeceleration.bind(this));
-      this.decVelX = decVelX;
-    } else {
-      this.isDecelerating = false;
-    }
+    this.offsetX = point;
+    this.changeDetectorRef.detectChanges();
   }
 }
 
@@ -191,9 +153,4 @@ function getXFromEvent(event: TouchEvent | MouseEvent): number {
   } else {
     return event.pageX;
   }
-}
-
-interface TrackingPoint {
-  time: number;
-  x: number;
 }
