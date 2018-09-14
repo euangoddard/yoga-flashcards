@@ -20,8 +20,10 @@ import { Poses } from '../poses.service';
   templateUrl: './poses.component.html',
 })
 export class PosesComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy {
-  @Input('poses') allPoses!: Poses;
-  @Input() index!: number;
+  @Input('poses')
+  allPoses!: Poses;
+  @Input()
+  index!: number;
 
   private readonly element: HTMLElement;
 
@@ -43,7 +45,10 @@ export class PosesComponent implements OnInit, AfterViewInit, OnChanges, OnDestr
 
   ngOnInit(): void {
     fromEvent(window, 'resize')
-      .pipe(debounceTime(250), takeUntilDestroy(this))
+      .pipe(
+        debounceTime(250),
+        takeUntilDestroy(this),
+      )
       .subscribe(() => this.updateWidth());
   }
 
@@ -66,6 +71,7 @@ export class PosesComponent implements OnInit, AfterViewInit, OnChanges, OnDestr
   @HostListener('mousedown', ['$event'])
   @HostListener('touchstart', ['$event'])
   startDrag(event: TouchEvent | MouseEvent) {
+    this.queuedOffsets = [];
     event.preventDefault();
     this.lastPointerX = getXFromEvent(event);
     this.isDragging = true;
@@ -126,21 +132,24 @@ export class PosesComponent implements OnInit, AfterViewInit, OnChanges, OnDestr
     const width = this.widthSubject.getValue();
     const snapToOffset = width * Math.round(this.offsetX / width);
 
-    const pointCount = 15;
-    const stepX = (snapToOffset - this.offsetX) / pointCount;
+    const pointCount = 20;
+    const stepX = snapToOffset - this.offsetX;
     const queuedOffsets = [];
-    for (let i = 0; i < pointCount; ++i) {
-      queuedOffsets.push(snapToOffset - Math.round(i * stepX));
+    for (let i = 0; i < pointCount; i++) {
+      const t = i / pointCount;
+      queuedOffsets.push(snapToOffset - Math.round(t ** 3 * stepX));
     }
     this.queuedOffsets = queuedOffsets;
-    console.log(this.queuedOffsets);
     requestAnimationFrame(this.animateToSnappedPose.bind(this));
   }
 
   private animateToSnappedPose(): void {
-    const point = this.queuedOffsets.pop()!;
+    const point = this.queuedOffsets.pop();
     if (this.queuedOffsets.length) {
       requestAnimationFrame(this.animateToSnappedPose.bind(this));
+    }
+    if (typeof point === 'undefined') {
+      return;
     }
     this.offsetX = point;
     this.changeDetectorRef.detectChanges();
