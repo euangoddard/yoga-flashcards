@@ -4,8 +4,10 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  EventEmitter,
   HostListener,
   Input,
+  Output,
   OnChanges,
   OnDestroy,
   OnInit,
@@ -25,6 +27,8 @@ export class PosesComponent implements OnInit, AfterViewInit, OnChanges, OnDestr
   allPoses!: Poses;
   @Input()
   pose!: Pose;
+  @Output()
+  poseChange = new EventEmitter<Pose>();
 
   private readonly element: HTMLElement;
 
@@ -102,14 +106,22 @@ export class PosesComponent implements OnInit, AfterViewInit, OnChanges, OnDestr
     return `translate3d(${this.offsetX}px, 0, 0)`;
   }
 
+  private getRelativePose(delta: 1 | -1): Pose {
+    let index = this.allPoses.findIndex(p => p.id === this.pose.id);
+    const posesCount = this.allPoses.length;
+    index += delta;
+    if (index >= posesCount) {
+      index = 0;
+    }
+    if (index < 0) {
+      index = posesCount - 1;
+    }
+    return this.allPoses[index];
+  }
+
   private updateActivePoses(): void {
-    const index = this.allPoses.findIndex(p => p.id === this.pose.id);
-    // TODO: Consider end cases
-    this.activePosesSubject.next([
-      this.allPoses[index - 1],
-      this.allPoses[index],
-      this.allPoses[index + 1],
-    ]);
+    this.activePosesSubject.next([this.getRelativePose(-1), this.pose, this.getRelativePose(1)]);
+    this.offsetX = 0;
     this.changeDetectorRef.detectChanges();
   }
 
@@ -144,12 +156,27 @@ export class PosesComponent implements OnInit, AfterViewInit, OnChanges, OnDestr
     const point = this.queuedOffsets.pop();
     if (this.queuedOffsets.length) {
       requestAnimationFrame(this.animateToSnappedPose.bind(this));
+    } else {
+      this.handleAnimationEnd(point || 0);
     }
     if (typeof point === 'undefined') {
       return;
     }
     this.offsetX = point;
     this.changeDetectorRef.detectChanges();
+  }
+
+  private handleAnimationEnd(lastPoint: number): void {
+    const width = this.widthSubject.getValue();
+    let pose: Pose | null = null;
+    if (lastPoint === width) {
+      pose = this.getRelativePose(-1);
+    } else if (lastPoint === -1 * width) {
+      pose = this.getRelativePose(1);
+    }
+    if (pose) {
+      this.poseChange.emit(pose);
+    }
   }
 }
 

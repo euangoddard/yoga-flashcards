@@ -1,1 +1,1 @@
-<yf-poses [poses]="poses$ | async" [pose]="pose$ | async"></yf-poses>
+<yf-poses [poses]="poses$ | async" [pose]="pose$ | async" (poseChange)="navigateToPose($event)"></yf-poses>
