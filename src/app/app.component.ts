@@ -1,16 +1,10 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { PosesService, Pose } from './poses.service';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Pose, PosesService } from './poses.service';
 
 @Component({
   selector: 'yoga-flashcards',
   templateUrl: './app.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent {
-  readonly poses$: Observable<ReadonlyArray<Pose>>;
-
-  constructor(private posesService: PosesService) {
-    this.poses$ = this.posesService.all();
-  }
-}
+export class AppComponent {}

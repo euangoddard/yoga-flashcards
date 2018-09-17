@@ -1,3 +1,4 @@
+import { Pose } from './../poses.service';
 import {
   AfterViewInit,
   ChangeDetectorRef,
@@ -10,7 +11,7 @@ import {
   OnInit,
   SimpleChanges,
 } from '@angular/core';
-import { BehaviorSubject, fromEvent, Subject } from 'rxjs';
+import { BehaviorSubject, fromEvent, ReplaySubject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { takeUntilDestroy } from 'take-until-destroy';
 import { Poses } from '../poses.service';
@@ -23,7 +24,7 @@ export class PosesComponent implements OnInit, AfterViewInit, OnChanges, OnDestr
   @Input('poses')
   allPoses!: Poses;
   @Input()
-  index!: number;
+  pose!: Pose;
 
   private readonly element: HTMLElement;
 
@@ -32,7 +33,7 @@ export class PosesComponent implements OnInit, AfterViewInit, OnChanges, OnDestr
   private lastPointerX = 0;
   private queuedOffsets: number[] = [];
 
-  private readonly activePosesSubject = new Subject<Poses>();
+  private readonly activePosesSubject = new ReplaySubject<Poses>(1);
   readonly activePoses$ = this.activePosesSubject.asObservable();
 
   private readonly widthSubject = new BehaviorSubject<number>(0);
@@ -57,12 +58,7 @@ export class PosesComponent implements OnInit, AfterViewInit, OnChanges, OnDestr
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (
-      this.allPoses &&
-      this.allPoses.length &&
-      typeof this.index !== undefined &&
-      this.index !== null
-    ) {
+    if (this.allPoses && this.allPoses.length && this.pose) {
       this.updateActivePoses();
     }
   }
@@ -107,11 +103,12 @@ export class PosesComponent implements OnInit, AfterViewInit, OnChanges, OnDestr
   }
 
   private updateActivePoses(): void {
+    const index = this.allPoses.findIndex(p => p.id === this.pose.id);
     // TODO: Consider end cases
     this.activePosesSubject.next([
-      this.allPoses[this.index - 1],
-      this.allPoses[this.index],
-      this.allPoses[this.index + 1],
+      this.allPoses[index - 1],
+      this.allPoses[index],
+      this.allPoses[index + 1],
     ]);
     this.changeDetectorRef.detectChanges();
   }
