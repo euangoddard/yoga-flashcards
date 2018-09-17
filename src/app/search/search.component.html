@@ -2,7 +2,7 @@
 
 <div class="search-results" *ngIf="search$ | async as search">
   <div class="search-result" *ngFor="let result of search.results">
-    <h3>{{ result.name }}</h3>
+    <h3><a [routerLink]="['/poses', result.id]">{{ result.name }}</a></h3>
     <h4>{{ result.sanskrit || 'N/A' }}</h4>
   </div>
 
