@@ -24,7 +24,7 @@ export class SearchComponent {
       mergeMap(query => {
         return this.posesService.search(query).pipe(
           map(results => {
-            return { query, results };
+            return { query, results: results.slice(0, 6) };
           }),
         );
       }),

@@ -1,0 +1,99 @@
+@import 'variables';
+@import 'material-color';
+
+yf-search {
+  background: material-color(blue-grey, 900);
+  display: block;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
+  margin-bottom: 2rem;
+}
+
+.search-query-container {
+  position: relative;
+}
+.search-container {
+  max-width: $width-cap;
+  margin: 0 auto;
+  padding: 0.5rem;
+}
+
+.search-query-icon {
+  position: absolute;
+  left: 0.5rem;
+  top: 0.5rem;
+
+  path:first-child {
+    transition: fill 0.25s ease;
+    fill: material-color(blue-grey, 100);
+  }
+}
+
+.search-query {
+  appearance: none;
+  border: none;
+  border-bottom: 1px solid material-color(blue-grey, 100);
+  background: transparent;
+  font-size: 1rem;
+  line-height: 1rem;
+  padding: 1rem;
+  padding-left: 3rem;
+  border-radius: 2px;
+  width: 100%;
+  transition: border-bottom-color 0.25s ease, background-color 0.25s ease;
+  color: material-color(blue-grey, 50);
+
+  &:focus,
+  &:active {
+    background: material-color(blue-grey, 800);
+    outline: none;
+    border-bottom-color: material-color(blue-grey, 50);
+  }
+}
+
+.search-query-container.focused {
+  .search-query-icon {
+    path:first-child {
+      fill: material-color(blue-grey, 50);
+    }
+  }
+}
+
+.search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: material-color(blue-grey, 800);
+  z-index: 1;
+  color: material-color(blue-grey, 50);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
+}
+
+.search-result {
+  display: block;
+  border-bottom: 1px solid material-color(blue-grey, 600);
+  color: inherit;
+  transition: background-color 0.15s ease;
+  text-decoration: none;
+  padding: 1rem 1rem 1rem 3rem;
+
+  &:hover {
+    background: material-color(blue-grey, 700);
+  }
+
+  h3 {
+    margin: 0 0 1rem;
+    line-height: 1;
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+
+  h4 {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1;
+    font-weight: 400;
+    font-style: italic;
+    color: material-color(blue-grey, 100);
+  }
+}
