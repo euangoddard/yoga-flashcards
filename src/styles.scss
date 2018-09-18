@@ -1,6 +1,7 @@
 @import 'styles/material-color';
 @import 'styles/variables';
 @import 'styles/search';
+@import 'styles/poses';
 
 * {
   box-sizing: border-box;
@@ -13,43 +14,5 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   background: #f2f2f2;
-}
-
-yf-poses,
-yf-pose {
-  display: block;
-}
-
-yf-poses {
-  max-width: $width-cap;
-  margin: 0 auto;
-  background: #fff;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.16), 0 6px 12px rgba(0, 0, 0, 0.32);
-}
-
-.poses-slider {
-  overflow: hidden;
-  cursor: grab;
-}
-.poses-slider--dragging {
-  user-select: none;
-  cursor: grabbing;
-}
-
-.poses-wrapper {
-  transform: translateX(-1 * percentage(1/3));
-}
-
-.poses-track {
-  display: flex;
-  will-change: transform;
-}
-
-yf-pose {
-  text-align: center;
-  border-right: 1px solid material-color(blue-grey, 100);
-
-  &:last-child {
-    border-right: none;
-  }
+  color: material-color(blue-grey, 900);
 }

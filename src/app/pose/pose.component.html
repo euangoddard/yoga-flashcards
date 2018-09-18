@@ -1,5 +1,5 @@
 <div *ngIf="pose">
-  <h3>{{ pose.name }}</h3>
-  <p *ngIf="pose.sanskrit">{{ pose.sanskrit }}</p>
-  <img [src]="pose.imageUrl" [alt]="pose.name">
+  <h2 class="pose-title">{{ pose.name }}</h2>
+  <h3 *ngIf="pose.sanskrit" class="pose-sanskrit">{{ pose.sanskrit }}</h3>
+  <img [src]="pose.imageUrl" [alt]="pose.name" class="pose-image">
 </div>

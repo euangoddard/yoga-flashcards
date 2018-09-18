@@ -1,0 +1,63 @@
+@import 'variables';
+@import 'mixins';
+
+%pose-base {
+  display: block;
+}
+
+yf-poses {
+  @extend %pose-base;
+  max-width: $width-cap;
+  margin: 0 auto;
+  background: #fff;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+
+  @include large-screen {
+    height: auto;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.16), 0 6px 12px rgba(0, 0, 0, 0.32);
+  }
+}
+
+.poses-slider {
+  overflow: hidden;
+  cursor: grab;
+}
+.poses-slider--dragging {
+  user-select: none;
+  cursor: grabbing;
+}
+
+.poses-wrapper {
+  transform: translateX(-1 * percentage(1/3));
+}
+
+.poses-track {
+  display: flex;
+  will-change: transform;
+}
+
+yf-pose {
+  @extend %pose-base;
+  text-align: center;
+}
+
+.pose-title {
+  font-size: 1.5rem;
+  line-height: 1;
+  font-weight: 500;
+  margin: 1rem 0;
+}
+
+.pose-sanskrit {
+  font-size: 1.25rem;
+  font-style: italic;
+  font-weight: 400;
+  margin: 0 0 1rem;
+}
+
+.pose-image {
+  max-width: 100%;
+  height: auto;
+}

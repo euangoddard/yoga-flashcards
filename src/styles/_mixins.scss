@@ -1,0 +1,7 @@
+@import 'variables';
+
+@mixin large-screen {
+  @media screen and (min-width: $width-cap) {
+    @content;
+  }
+}
