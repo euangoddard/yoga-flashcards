@@ -1,15 +1,24 @@
-<input [formControl]="searchControl" placeholder="Search">
+<div class="search-container">
 
-<ng-container *ngIf="search$ | async as search">
-  <div class="search-results" *ngIf="search.query">
-    <div class="search-result" *ngFor="let result of search.results">
-      <h3><a [routerLink]="['/poses', result.id]">{{ result.name }}</a></h3>
-      <h4>{{ result.sanskrit || 'N/A' }}</h4>
-    </div>
-
-    <div class="search-results--empty" *ngIf="!search.results.length && search.query">
-      No matches for <em>{{ search.query }}</em>
-    </div>
-
+  <div class="search-query-container" [class.focused]="isFocused$ | async">
+    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" class="search-query-icon">
+      <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+      <path d="M0 0h24v24H0z" fill="none"/>
+    </svg>
+    <input [formControl]="searchControl" placeholder="Search" class="search-query" (focus)="focus()" (blur)="blur()">
   </div>
-</ng-container>
+
+  <ng-container *ngIf="search$ | async as search">
+    <div class="search-results" *ngIf="search.query">
+      <div class="search-result" *ngFor="let result of search.results">
+        <h3><a [routerLink]="['/poses', result.id]">{{ result.name }}</a></h3>
+        <h4>{{ result.sanskrit || 'N/A' }}</h4>
+      </div>
+
+      <div class="search-results--empty" *ngIf="!search.results.length && search.query">
+        No matches for <em>{{ search.query }}</em>
+      </div>
+
+    </div>
+  </ng-container>
+</div>

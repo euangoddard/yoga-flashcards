@@ -1,15 +1,15 @@
-import { ROUTES } from './app.routes';
-import { PosesComponent } from './poses/poses.component';
-import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule, FormControlDirective } from '@angular/forms';
-import { SearchComponent } from './search/search.component';
-import { PoseComponent } from './pose/pose.component';
+import { ROUTES } from './app.routes';
 import { BrowseComponent } from './browse/browse.component';
 import { HomeComponent } from './home/home.component';
+import { PoseComponent } from './pose/pose.component';
+import { PosesComponent } from './poses/poses.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [

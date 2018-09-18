@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
+import { Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map, mergeMap } from 'rxjs/operators';
-import { PosesService, Poses } from '../poses.service';
-import { Observable } from 'rxjs';
+import { Poses, PosesService } from '../poses.service';
 
 @Component({
   selector: 'yf-search',
@@ -11,6 +11,9 @@ import { Observable } from 'rxjs';
 export class SearchComponent {
   readonly searchControl: FormControl;
   readonly search$: Observable<SearchResults>;
+
+  private readonly focusSubject = new Subject<boolean>();
+  readonly isFocused$ = this.focusSubject.asObservable();
 
   constructor(private posesService: PosesService, private formBuilder: FormBuilder) {
     this.searchControl = this.formBuilder.control('');
@@ -27,8 +30,17 @@ export class SearchComponent {
       }),
     );
   }
+
   search(query: string): void {
     this.posesService.search(query);
+  }
+
+  focus(): void {
+    this.focusSubject.next(true);
+  }
+
+  blur(): void {
+    this.focusSubject.next(false);
   }
 }
 

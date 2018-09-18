@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Pose } from 'src/app/poses.service';
 
 @Component({
@@ -7,6 +7,5 @@ import { Pose } from 'src/app/poses.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PoseComponent {
-  @Input()
-  pose!: Pose;
+  @Input() pose!: Pose;
 }

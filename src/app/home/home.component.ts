@@ -3,13 +3,10 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'yf-home',
   templateUrl: './home.component.html',
-  styles: []
+  styles: [],
 })
 export class HomeComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

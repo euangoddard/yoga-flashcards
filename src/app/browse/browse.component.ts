@@ -1,9 +1,8 @@
-import { pluck } from 'rxjs/operators';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Poses, PosesService } from './../poses.service';
-import { Pose } from './../poses.service';
-import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { pluck } from 'rxjs/operators';
+import { Pose, PosesService } from './../poses.service';
 
 @Component({
   selector: 'yf-browse',

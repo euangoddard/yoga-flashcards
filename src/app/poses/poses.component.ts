@@ -1,4 +1,3 @@
-import { Pose } from './../poses.service';
 import {
   AfterViewInit,
   ChangeDetectorRef,
@@ -7,28 +6,26 @@ import {
   EventEmitter,
   HostListener,
   Input,
-  Output,
   OnChanges,
   OnDestroy,
   OnInit,
+  Output,
   SimpleChanges,
 } from '@angular/core';
 import { BehaviorSubject, fromEvent, ReplaySubject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { takeUntilDestroy } from 'take-until-destroy';
 import { Poses } from '../poses.service';
+import { Pose } from './../poses.service';
 
 @Component({
   selector: 'yf-poses',
   templateUrl: './poses.component.html',
 })
 export class PosesComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy {
-  @Input('poses')
-  allPoses!: Poses;
-  @Input()
-  pose!: Pose;
-  @Output()
-  poseChange = new EventEmitter<Pose>();
+  @Input('poses') allPoses!: Poses;
+  @Input() pose!: Pose;
+  @Output() poseChange = new EventEmitter<Pose>();
 
   private readonly element: HTMLElement;
 
@@ -50,10 +47,7 @@ export class PosesComponent implements OnInit, AfterViewInit, OnChanges, OnDestr
 
   ngOnInit(): void {
     fromEvent(window, 'resize')
-      .pipe(
-        debounceTime(250),
-        takeUntilDestroy(this),
-      )
+      .pipe(debounceTime(250), takeUntilDestroy(this))
       .subscribe(() => this.updateWidth());
   }
 

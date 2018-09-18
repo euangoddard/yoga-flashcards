@@ -1,4 +1,75 @@
+@import 'styles/material-color';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  background: #f2f2f2;
+}
+
 $width-cap: 800px;
+
+yf-search {
+  background: material-color(blue-grey, 900);
+  display: block;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
+  margin-bottom: 2rem;
+}
+
+.search-query-container {
+  position: relative;
+}
+.search-container {
+  max-width: $width-cap;
+  margin: 0 auto;
+  padding: 0.5rem;
+}
+
+.search-query-icon {
+  position: absolute;
+  left: 0.5rem;
+  top: 0.5rem;
+
+  path:first-child {
+    transition: fill 0.25s ease;
+    fill: material-color(blue-grey, 100);
+  }
+}
+
+.search-query {
+  appearance: none;
+  border: none;
+  border-bottom: 1px solid material-color(blue-grey, 100);
+  background: transparent;
+  font-size: 1rem;
+  line-height: 1rem;
+  padding: 1rem;
+  padding-left: 3rem;
+  border-radius: 2px;
+  width: 100%;
+  transition: border-bottom-color 0.25s ease, background-color 0.25s ease;
+
+  &:focus,
+  &:active {
+    background: material-color(blue-grey, 800);
+    outline: none;
+    border-bottom-color: material-color(blue-grey, 50);
+  }
+}
+
+.search-query-container.focused {
+  .search-query-icon {
+    path:first-child {
+      fill: material-color(blue-grey, 50);
+    }
+  }
+}
 
 yf-poses,
 yf-pose {
@@ -8,6 +79,7 @@ yf-pose {
 yf-poses {
   max-width: $width-cap;
   margin: 0 auto;
+  background: #fff;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.16), 0 6px 12px rgba(0, 0, 0, 0.32);
 }
 
@@ -31,7 +103,7 @@ yf-poses {
 
 yf-pose {
   text-align: center;
-  border-right: 1px solid gray;
+  border-right: 1px solid material-color(blue-grey, 100);
 
   &:last-child {
     border-right: none;

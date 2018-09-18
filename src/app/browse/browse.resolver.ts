@@ -1,8 +1,8 @@
-import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@angular/router';
+import { Observable } from 'rxjs';
+import { map, take, tap } from 'rxjs/operators';
 import { Pose, PosesService } from './../poses.service';
-import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
-import { map, tap, take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
