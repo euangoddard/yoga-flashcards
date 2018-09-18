@@ -6,7 +6,7 @@
       />
       <path d="M0 0h24v24H0z" fill="none" />
     </svg>
-    <input [formControl]="searchControl" placeholder="Search" class="search-query" (focus)="focus()" (blur)="blur()">
+    <input [formControl]="searchControl" placeholder="Search" class="search-query" (focus)="focus()" (blur)="blur()" (keyup)="navigateResults($event)">
     <ng-container *ngIf="search$ | async as search">
       <div class="search-results" *ngIf="search.query">
         <a [routerLink]="['/poses', result.id]" class="search-result" *ngFor="let result of search.results">
