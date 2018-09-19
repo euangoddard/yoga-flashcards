@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
-import { Observable, Subject, BehaviorSubject, combineLatest } from 'rxjs';
-import { debounceTime, distinctUntilChanged, map, mergeMap } from 'rxjs/operators';
+import { combineLatest, Observable, Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, map, mergeMap, take } from 'rxjs/operators';
 import { Poses, PosesService } from '../poses.service';
 
 @Component({
@@ -20,7 +20,11 @@ export class SearchComponent {
 
   private readonly keyCodeSubject = new Subject<number>();
 
-  constructor(private posesService: PosesService, private formBuilder: FormBuilder) {
+  constructor(
+    private posesService: PosesService,
+    private formBuilder: FormBuilder,
+    private zone: NgZone,
+  ) {
     this.searchControl = this.formBuilder.control('');
     this.search$ = this.searchControl.valueChanges.pipe(
       map(s => s.trim()),
@@ -40,16 +44,15 @@ export class SearchComponent {
     );
   }
 
-  search(query: string): void {
-    this.posesService.search(query);
-  }
-
   focus(): void {
     this.focusSubject.next(true);
   }
 
   blur(): void {
     this.focusSubject.next(false);
+    this.zone.onStable.pipe(take(1)).subscribe(() => {
+      this.searchControl.setValue('');
+    });
   }
 
   navigateResults(event: KeyboardEvent): void {
