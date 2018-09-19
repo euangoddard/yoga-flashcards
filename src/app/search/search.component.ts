@@ -1,7 +1,7 @@
-import { Component, NgZone } from '@angular/core';
+import { ChangeDetectorRef, Component, NgZone } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
-import { combineLatest, Observable, Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged, map, mergeMap, take } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, map, mergeMap, take, tap } from 'rxjs/operators';
 import { Poses, PosesService } from '../poses.service';
 
 @Component({
@@ -12,17 +12,16 @@ export class SearchComponent {
   readonly searchControl: FormControl;
   readonly search$: Observable<SearchResults>;
 
+  selectedIndex = 0;
+  private resultCount = 0;
+
   private readonly focusSubject = new Subject<boolean>();
   readonly isFocused$ = this.focusSubject.asObservable();
-
-  private selectedIndex: number | null = null;
-  readonly selectedIndex$!: Observable<number | null>;
-
-  private readonly keyCodeSubject = new Subject<number>();
 
   constructor(
     private posesService: PosesService,
     private formBuilder: FormBuilder,
+    private changeDetectorRef: ChangeDetectorRef,
     private zone: NgZone,
   ) {
     this.searchControl = this.formBuilder.control('');
@@ -30,17 +29,15 @@ export class SearchComponent {
       map(s => s.trim()),
       debounceTime(100),
       distinctUntilChanged(),
+      tap(() => (this.selectedIndex = 0)),
       mergeMap(query => {
         return this.posesService.search(query).pipe(
           map(results => {
             return { query, results: results.slice(0, 6) };
           }),
+          tap(({ results }) => (this.resultCount = results.length)),
         );
       }),
-    );
-
-    this.selectedIndex$ = combineLatest(this.search$, this.keyCodeSubject.asObservable()).pipe(
-      map(([search, keyCode]) => this.updateSelection(search, keyCode)),
     );
   }
 
@@ -56,28 +53,32 @@ export class SearchComponent {
   }
 
   navigateResults(event: KeyboardEvent): void {
-    this.keyCodeSubject.next(event.keyCode);
-    const keyCode = event.keyCode;
+    let isChangeDetectionRequired = true;
     switch (event.keyCode) {
       case 40:
-        console.log('arrow down');
+        this.selectedIndex = (this.selectedIndex + 1) % this.resultCount;
         break;
       case 38:
-        console.log('arrow up');
+        if (this.selectedIndex === 0) {
+          this.selectedIndex = this.resultCount - 1;
+        } else {
+          this.selectedIndex -= 1;
+        }
         break;
       case 27:
-        console.log('escape');
+        this.searchControl.setValue('');
+        setTimeout(() => this.blur(), 101); // Account for debounced search time
         break;
       case 13:
         console.log('enter');
         break;
+      default:
+        isChangeDetectionRequired = false;
     }
-  }
 
-  updateSelection(results: SearchResults, keyCode: number): number | null {
-    console.log(results);
-    console.log(keyCode);
-    return null;
+    if (isChangeDetectionRequired) {
+      this.changeDetectorRef.detectChanges();
+    }
   }
 }
 
