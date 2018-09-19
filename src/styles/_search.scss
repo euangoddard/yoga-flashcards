@@ -76,6 +76,7 @@ yf-search {
 
 .search-result {
   @extend %base-item;
+  cursor: pointer;
   border-bottom: 1px solid material-color(blue-grey, 600);
   color: inherit;
   transition: background-color 0.15s ease;

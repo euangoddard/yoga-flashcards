@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { PoseComponent } from './pose/pose.component';
 import { PosesComponent } from './poses/poses.component';
 import { SearchComponent } from './search/search.component';
+import { SearchResultComponent } from './search/search-result/search-result.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { SearchComponent } from './search/search.component';
     PosesComponent,
     BrowseComponent,
     HomeComponent,
+    SearchResultComponent,
   ],
   imports: [BrowserModule, HttpClientModule, ReactiveFormsModule, RouterModule.forRoot(ROUTES)],
   bootstrap: [AppComponent],

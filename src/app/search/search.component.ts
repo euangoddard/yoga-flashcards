@@ -1,4 +1,5 @@
-import { ChangeDetectorRef, Component, NgZone } from '@angular/core';
+import { SearchResultComponent } from './search-result/search-result.component';
+import { ChangeDetectorRef, Component, NgZone, ViewChildren, QueryList } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map, mergeMap, take, tap } from 'rxjs/operators';
@@ -14,6 +15,9 @@ export class SearchComponent {
 
   selectedIndex = 0;
   private resultCount = 0;
+
+  @ViewChildren(SearchResultComponent)
+  private resultElements!: QueryList<SearchResultComponent>;
 
   private readonly focusSubject = new Subject<boolean>();
   readonly isFocused$ = this.focusSubject.asObservable();
@@ -70,7 +74,12 @@ export class SearchComponent {
         setTimeout(() => this.blur(), 101); // Account for debounced search time
         break;
       case 13:
-        console.log('enter');
+        if (this.resultElements) {
+          (<QueryList<SearchResultComponent>this.resultElements).find((_, index) => index === this.selectedIndex).gotoResult();
+          this.searchControl.setValue('');
+          setTimeout(() => this.blur(), 101); // Account for debounced search time
+        }
+
         break;
       default:
         isChangeDetectionRequired = false;
