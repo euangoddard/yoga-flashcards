@@ -1,10 +1,11 @@
 @import 'variables';
+@import "mixins";
 @import 'material-color';
 
 yf-search {
   background: material-color(blue-grey, 900);
   display: block;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
+  @include raised-1;
   margin-bottom: 2rem;
 }
 
@@ -66,7 +67,7 @@ yf-search {
   background: material-color(blue-grey, 800);
   z-index: 1;
   color: material-color(blue-grey, 50);
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
+  @include raised-1;
 }
 
 %base-item {

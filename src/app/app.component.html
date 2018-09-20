@@ -1,3 +1,11 @@
 <yf-search></yf-search>
 
 <router-outlet></router-outlet>
+
+<footer class="footer">
+  <nav class="footer-nav">
+    <a routerLink="/" routerLinkActive="active" class="footer-link" [routerLinkActiveOptions]="{exact: true}">Home</a>
+    <a routerLink="/poses" routerLinkActive="active" class="footer-link">Poses</a>
+    <a routerLink="/glossary" routerLinkActive="active" class="footer-link">Glossary</a>
+  </nav>
+</footer>

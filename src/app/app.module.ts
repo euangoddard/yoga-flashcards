@@ -11,6 +11,8 @@ import { PoseComponent } from './pose/pose.component';
 import { PosesComponent } from './poses/poses.component';
 import { SearchComponent } from './search/search.component';
 import { SearchResultComponent } from './search/search-result/search-result.component';
+import { PoseRedirectComponent } from './pose-redirect/pose-redirect.component';
+import { GlossaryComponent } from './glossary/glossary.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { SearchResultComponent } from './search/search-result/search-result.comp
     BrowseComponent,
     HomeComponent,
     SearchResultComponent,
+    PoseRedirectComponent,
+    GlossaryComponent,
   ],
   imports: [BrowserModule, HttpClientModule, ReactiveFormsModule, RouterModule.forRoot(ROUTES)],
   bootstrap: [AppComponent],
