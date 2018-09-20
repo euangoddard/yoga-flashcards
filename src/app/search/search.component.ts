@@ -1,9 +1,9 @@
-import { SearchResultComponent } from './search-result/search-result.component';
-import { ChangeDetectorRef, Component, NgZone, ViewChildren, QueryList } from '@angular/core';
+import { ChangeDetectorRef, Component, NgZone, QueryList, ViewChildren } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { Observable, Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged, map, mergeMap, take, tap } from 'rxjs/operators';
+import { distinctUntilChanged, map, mergeMap, take, tap } from 'rxjs/operators';
 import { Poses, PosesService } from '../poses.service';
+import { SearchResultComponent } from './search-result/search-result.component';
 
 @Component({
   selector: 'yf-search',
@@ -31,7 +31,6 @@ export class SearchComponent {
     this.searchControl = this.formBuilder.control('');
     this.search$ = this.searchControl.valueChanges.pipe(
       map(s => s.trim()),
-      debounceTime(100),
       distinctUntilChanged(),
       tap(() => (this.selectedIndex = 0)),
       mergeMap(query => {
@@ -71,14 +70,14 @@ export class SearchComponent {
         break;
       case 27:
         this.searchControl.setValue('');
-        setTimeout(() => this.blur(), 101); // Account for debounced search time
+        setTimeout(() => this.blur());
         break;
       case 13:
         const resultElement = this.resultElements.find((_, index) => index === this.selectedIndex);
         if (resultElement) {
           resultElement.gotoResult();
           this.searchControl.setValue('');
-          setTimeout(() => this.blur(), 101); // Account for debounced search time
+          setTimeout(() => this.blur());
         }
         break;
       default:
