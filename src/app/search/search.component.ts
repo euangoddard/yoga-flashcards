@@ -74,12 +74,12 @@ export class SearchComponent {
         setTimeout(() => this.blur(), 101); // Account for debounced search time
         break;
       case 13:
-        if (this.resultElements) {
-          (<QueryList<SearchResultComponent>this.resultElements).find((_, index) => index === this.selectedIndex).gotoResult();
+        const resultElement = this.resultElements.find((_, index) => index === this.selectedIndex);
+        if (resultElement) {
+          resultElement.gotoResult();
           this.searchControl.setValue('');
           setTimeout(() => this.blur(), 101); // Account for debounced search time
         }
-
         break;
       default:
         isChangeDetectionRequired = false;
