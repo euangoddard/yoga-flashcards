@@ -6,8 +6,8 @@
   left: 0;
   bottom: 0;
   width: 100%;
-  color: material-color(blue-grey, 50);
-  background-color: material-color(blue-grey, 900);
+  color: material-color($theme-primary, 50);
+  background-color: material-color($theme-primary, 900);
   @include raised-1;
 }
 
@@ -15,7 +15,7 @@
   max-width: $width-cap;
   margin: 0 auto;
   display: flex;
-  justify-content:space-around;
+  justify-content: space-around;
 }
 
 .footer-link {
@@ -29,7 +29,7 @@
   &:hover,
   &:focus,
   &.active {
-    background-color: material-color(blue-grey, 800);
-    color: material-color(blue-grey, 100);
+    background-color: material-color($theme-primary, 800);
+    color: material-color($theme-primary, 100);
   }
 }

@@ -1,9 +1,9 @@
 @import 'variables';
-@import "mixins";
+@import 'mixins';
 @import 'material-color';
 
 yf-search {
-  background: material-color(blue-grey, 900);
+  background: material-color($theme-primary, 900);
   display: block;
   @include raised-1;
   margin-bottom: 2rem;
@@ -25,14 +25,14 @@ yf-search {
 
   path:first-child {
     transition: fill 0.25s ease;
-    fill: material-color(blue-grey, 100);
+    fill: material-color($theme-primary, 100);
   }
 }
 
 .search-query {
   appearance: none;
   border: none;
-  border-bottom: 1px solid material-color(blue-grey, 100);
+  border-bottom: 1px solid material-color($theme-primary, 100);
   background: transparent;
   font-size: 1rem;
   line-height: 1rem;
@@ -41,20 +41,20 @@ yf-search {
   border-radius: 2px;
   width: 100%;
   transition: border-bottom-color 0.25s ease, background-color 0.25s ease;
-  color: material-color(blue-grey, 50);
+  color: material-color($theme-primary, 50);
 
   &:focus,
   &:active {
-    background: material-color(blue-grey, 800);
+    background: material-color($theme-primary, 800);
     outline: none;
-    border-bottom-color: material-color(blue-grey, 50);
+    border-bottom-color: material-color($theme-primary, 50);
   }
 }
 
 .search-query-container.focused {
   .search-query-icon {
     path:first-child {
-      fill: material-color(blue-grey, 50);
+      fill: material-color($theme-primary, 50);
     }
   }
 }
@@ -64,9 +64,9 @@ yf-search {
   top: 100%;
   left: 0;
   width: 100%;
-  background: material-color(blue-grey, 800);
+  background: material-color($theme-primary, 800);
   z-index: 1;
-  color: material-color(blue-grey, 50);
+  color: material-color($theme-primary, 50);
   @include raised-1;
 }
 
@@ -78,7 +78,7 @@ yf-search {
 .search-result {
   @extend %base-item;
   cursor: pointer;
-  border-bottom: 1px solid material-color(blue-grey, 600);
+  border-bottom: 1px solid material-color($theme-primary, 600);
   color: inherit;
   transition: background-color 0.15s ease;
   text-decoration: none;
@@ -86,7 +86,7 @@ yf-search {
   &:hover,
   &:focus,
   &.selected {
-    background: material-color(blue-grey, 700);
+    background: material-color($theme-primary, 700);
   }
 
   h3 {
@@ -102,7 +102,7 @@ yf-search {
     line-height: 1;
     font-weight: 400;
     font-style: italic;
-    color: material-color(blue-grey, 100);
+    color: material-color($theme-primary, 100);
   }
 }
 

@@ -1,0 +1,27 @@
+@import 'variables';
+@import 'mixins';
+
+.glossary-table {
+  border-collapse: collapse;
+  color: material-color($theme-primary, 50);
+  background: material-color($theme-primary, 900);
+  border-radius: 2px;
+  margin: 0 auto;
+  font-size: 0.875rem;
+  @include raised-2;
+
+  tr {
+    border-bottom: 1px solid material-color($theme-primary, 600);
+  }
+
+  td,
+  th {
+    padding: 0.5rem 1.5rem;
+    text-align: left;
+  }
+
+  th {
+    font-weight: 500;
+    color: material-color($theme-primary, 100);
+  }
+}
