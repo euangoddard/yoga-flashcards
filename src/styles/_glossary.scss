@@ -1,6 +1,24 @@
 @import 'variables';
 @import 'mixins';
 
+yf-glossary {
+  display: block;
+  max-width: $width-cap;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.glossary-title {
+  font-size: 2rem;
+  font-weight: 500;
+  margin: 0 0 1rem;
+}
+
+.glossary-intro {
+  color: material-color($theme-primary, 700);
+  margin: 0 0 2rem;
+}
+
 .glossary-table {
   border-collapse: collapse;
   color: material-color($theme-primary, 50);
