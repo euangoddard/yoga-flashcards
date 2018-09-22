@@ -23,9 +23,12 @@ import { Pose } from './../poses.service';
   templateUrl: './poses.component.html',
 })
 export class PosesComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy {
-  @Input('poses') allPoses!: Poses;
-  @Input() pose!: Pose;
-  @Output() poseChange = new EventEmitter<Pose>();
+  @Input('poses')
+  allPoses!: Poses;
+  @Input()
+  pose!: Pose;
+  @Output()
+  poseChange = new EventEmitter<Pose>();
 
   private readonly element: HTMLElement;
 
@@ -47,7 +50,10 @@ export class PosesComponent implements OnInit, AfterViewInit, OnChanges, OnDestr
 
   ngOnInit(): void {
     fromEvent(window, 'resize')
-      .pipe(debounceTime(250), takeUntilDestroy(this))
+      .pipe(
+        debounceTime(250),
+        takeUntilDestroy(this),
+      )
       .subscribe(() => this.updateWidth());
   }
 
@@ -96,6 +102,16 @@ export class PosesComponent implements OnInit, AfterViewInit, OnChanges, OnDestr
     this.updateOffset(deltaX);
   }
 
+  @HostListener('window:keyup', ['$event.keyCode'])
+  moveWithKeys(keyCode: number): void {
+    const width = this.widthSubject.getValue();
+    if ([32, 39].includes(keyCode)) {
+      this.snapToPose(-1 * width);
+    } else if (keyCode === 37) {
+      this.snapToPose(width);
+    }
+  }
+
   get transform(): string {
     return `translate3d(${this.offsetX}px, 0, 0)`;
   }
@@ -131,12 +147,15 @@ export class PosesComponent implements OnInit, AfterViewInit, OnChanges, OnDestr
     this.changeDetectorRef.detectChanges();
   }
 
-  private snapToPose() {
-    const width = this.widthSubject.getValue();
-    const snapToOffset = width * Math.round(this.offsetX / width);
+  private snapToPose(snapToOffset?: number) {
+    const snapStart = this.offsetX;
+    if (typeof snapToOffset === 'undefined') {
+      const width = this.widthSubject.getValue();
+      snapToOffset = width * Math.round(snapStart / width);
+    }
 
     const pointCount = 20;
-    const stepX = snapToOffset - this.offsetX;
+    const stepX = snapToOffset - snapStart;
     const queuedOffsets = [];
     for (let i = 0; i < pointCount; i++) {
       const t = i / pointCount;
