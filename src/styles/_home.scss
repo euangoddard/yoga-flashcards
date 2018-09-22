@@ -1,0 +1,40 @@
+@import 'bases';
+@import 'material-color';
+
+yf-home {
+  @extend %capped-width;
+  padding: 0 1rem;
+}
+
+.home-title {
+  @extend %page-title;
+}
+
+.home-pose {
+  background: #fff;
+  padding: 1rem 0;
+  border-radius: 2px;
+  margin-bottom: 0.5rem;
+
+  .pose-title {
+    font-size: 1.5rem;
+  }
+
+  .pose-sanskrit {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+}
+
+.home-pose-link {
+  text-align: right;
+
+  a {
+    color: material-color(blue, 600);
+
+    &:hover,
+    &:focus {
+      color: material-color(blue, 500);
+    }
+  }
+}

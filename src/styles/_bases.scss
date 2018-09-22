@@ -1,0 +1,13 @@
+@import 'variables';
+
+%page-title {
+  font-size: 2rem;
+  font-weight: 500;
+  margin: 0 0 1rem;
+}
+
+%capped-width {
+  display: block;
+  max-width: $width-cap;
+  margin: 2rem auto;
+}

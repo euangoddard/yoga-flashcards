@@ -1,3 +1,10 @@
-<p>
-  home works!
-</p>
+<h1 class="home-title">Pose of the day</h1>
+
+<ng-container *ngIf="poseOfDay$ | async as pose">
+  <div class="home-pose">
+    <yf-pose [pose]="pose"></yf-pose>
+  </div>
+  <p class="home-pose-link">
+    <a routerLink="/poses">View more poses</a>
+  </p>
+</ng-container>

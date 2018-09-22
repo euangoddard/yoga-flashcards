@@ -1,17 +1,14 @@
 @import 'variables';
 @import 'mixins';
+@import 'bases';
 
 yf-glossary {
-  display: block;
-  max-width: $width-cap;
-  margin: 2rem auto;
-  padding: 1rem;
+  @extend %capped-width;
+  padding: 0 1rem;
 }
 
 .glossary-title {
-  font-size: 2rem;
-  font-weight: 500;
-  margin: 0 0 1rem;
+  @extend %page-title;
 }
 
 .glossary-intro {
