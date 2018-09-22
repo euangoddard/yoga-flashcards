@@ -2,7 +2,7 @@
 @import 'styles/variables';
 @import 'styles/search';
 @import 'styles/poses';
-@import 'styles/footer';
+@import 'styles/layout';
 @import 'styles/glossary';
 
 * {
@@ -11,7 +11,7 @@
 
 body {
   margin: 0;
-  font-size: 16px;
+  font-size: $font-size-root;
   line-height: 1.5;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';

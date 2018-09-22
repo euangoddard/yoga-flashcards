@@ -1,11 +1,29 @@
 @import 'material-color';
 @import 'mixins';
+@import 'variables';
 
-.footer {
+%fixed-base {
   position: fixed;
   left: 0;
-  bottom: 0;
   width: 100%;
+}
+
+.header {
+  @extend %fixed-base;
+  top: 0;
+}
+
+.content {
+  padding: {
+    top: $header-size;
+    bottom: $footer-size;
+  }
+}
+
+.footer {
+  @extend %fixed-base;
+  bottom: 0;
+  height: $footer-size;
   color: material-color($theme-primary, 50);
   background-color: material-color($theme-primary, 900);
   @include raised-1;

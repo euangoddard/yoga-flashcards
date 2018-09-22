@@ -10,12 +10,14 @@ yf-poses {
   max-width: $width-cap;
   margin: 0 auto;
   background: #fff;
-  height: 75vh;
+  height: calc(100vh - #{$header-size + $footer-size});
   display: flex;
   align-items: center;
 
   @include large-screen {
-    height: auto;
+    $vertical-offset: 4rem;
+    margin-top: $vertical-offset;
+    height: calc(100vh - #{$header-size + $footer-size} - #{2 * $vertical-offset});
     @include raised-2;
   }
 }
@@ -44,17 +46,17 @@ yf-pose {
 }
 
 .pose-title {
-  font-size: 1.5rem;
-  line-height: 1;
+  font-size: 2rem;
+  line-height: 1.25;
   font-weight: 500;
   margin: 1rem 0;
 }
 
 .pose-sanskrit {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-style: italic;
   font-weight: 400;
-  margin: 0 0 1rem;
+  margin: 0 0 2rem;
 }
 
 .pose-image {
