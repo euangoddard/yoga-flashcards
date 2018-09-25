@@ -65,7 +65,6 @@ yf-search {
   left: 0;
   width: 100%;
   background: material-color($theme-primary, 800);
-  z-index: 1;
   color: material-color($theme-primary, 50);
   @include raised-1;
 }
