@@ -21,7 +21,7 @@ export class PosesService {
       .subscribe(poses => {
         this.idx = lunr(function() {
           this.field('name');
-          this.field('sanskrit');
+          this.field('searchSanskrit');
           for (const pose of poses) {
             this.add(pose);
           }
