@@ -151,7 +151,11 @@ export class PosesComponent implements OnInit, AfterViewInit, OnChanges, OnDestr
     const snapStart = this.offsetX;
     if (typeof snapToOffset === 'undefined') {
       const width = this.widthSubject.getValue();
-      snapToOffset = width * Math.round(snapStart / width);
+      if (0.2 * width < Math.abs(this.offsetX) ) {
+        snapToOffset = Math.sign(this.offsetX) * width;
+      } else {
+        snapToOffset = 0;
+      }
     }
 
     const pointCount = 20;
