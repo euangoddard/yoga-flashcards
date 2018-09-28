@@ -1,6 +1,7 @@
 @import 'variables';
 @import 'mixins';
 @import 'bases';
+@import 'material-color';
 
 %pose-base {
   display: block;
@@ -95,7 +96,7 @@ yf-poses-list {
 
 .poses-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
   grid-gap: 1rem;
   align-items: stretch;
 }
@@ -122,14 +123,10 @@ yf-poses-list {
     margin: 0;
     $shadow-size: 0.1rem;
     $shadow-color: #fff;
-    text-shadow:
-      $shadow-size 0 $shadow-color,
-      0 $shadow-size $shadow-color,
-      -1 * $shadow-size 0 $shadow-color,
-      0 -1 * $shadow-size $shadow-color,
+    text-shadow: $shadow-size 0 $shadow-color, 0 $shadow-size $shadow-color,
+      -1 * $shadow-size 0 $shadow-color, 0 -1 * $shadow-size $shadow-color,
       -1 * $shadow-size -1 * $shadow-size $shadow-color,
-      -1 * $shadow-size $shadow-size $shadow-color,
-      $shadow-size -1 * $shadow-size $shadow-color,
+      -1 * $shadow-size $shadow-size $shadow-color, $shadow-size -1 * $shadow-size $shadow-color,
       $shadow-size $shadow-size $shadow-color;
   }
 
