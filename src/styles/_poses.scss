@@ -1,5 +1,6 @@
 @import 'variables';
 @import 'mixins';
+@import 'bases';
 
 %pose-base {
   display: block;
@@ -80,5 +81,59 @@ yf-pose {
   max-height: 40vh;
   @include large-screen {
     max-height: 50vh;
+  }
+}
+
+yf-poses-list {
+  padding: 1rem;
+  display: block;
+}
+
+.poses-title {
+  @extend %page-title;
+}
+
+.poses-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+  align-items: stretch;
+}
+
+.pose-preview {
+  display: block;
+  background: no-repeat center #fff;
+  background-size: cover;
+  padding: 4rem 1rem;
+  text-align: center;
+  color: material-color($theme-primary, 900);
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+    color: material-color($theme-primary, 800);
+  }
+
+  h2,
+  h3 {
+    font-weight: 500;
+    line-height: 1.2;
+    margin: 0;
+    $shadow-size: 0.1rem;
+    $shadow-color: #fff;
+    text-shadow:
+      $shadow-size 0 $shadow-color,
+      0 $shadow-size $shadow-color,
+      -1 * $shadow-size 0 $shadow-color,
+      0 -1 * $shadow-size $shadow-color,
+      -1 * $shadow-size -1 * $shadow-size $shadow-color,
+      -1 * $shadow-size $shadow-size $shadow-color,
+      $shadow-size -1 * $shadow-size $shadow-color,
+      $shadow-size $shadow-size $shadow-color;
+  }
+
+  h2 {
+    margin-bottom: 0.5rem;
   }
 }

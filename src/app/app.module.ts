@@ -10,7 +10,7 @@ import { ROUTES } from './app.routes';
 import { BrowseComponent } from './browse/browse.component';
 import { GlossaryComponent } from './glossary/glossary.component';
 import { HomeComponent } from './home/home.component';
-import { PoseRedirectComponent } from './pose-redirect/pose-redirect.component';
+import { PosesListComponent } from './poses-list/poses-list.component';
 import { PoseComponent } from './pose/pose.component';
 import { PosesComponent } from './poses/poses.component';
 import { SearchResultComponent } from './search/search-result/search-result.component';
@@ -25,7 +25,7 @@ import { SearchComponent } from './search/search.component';
     BrowseComponent,
     HomeComponent,
     SearchResultComponent,
-    PoseRedirectComponent,
+    PosesListComponent,
     GlossaryComponent,
   ],
   imports: [

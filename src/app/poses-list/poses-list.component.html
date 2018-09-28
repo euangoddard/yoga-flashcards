@@ -1,0 +1,7 @@
+<h1 class="poses-title">All poses</h1>
+<section class="poses-grid">
+  <a *ngFor="let pose of poses$ | async" [style.backgroundImage]="'url(' + pose.imageUrl +')'" class="pose-preview" [routerLink]="['/poses', pose.id]">
+    <h2>{{ pose.name }}</h2>
+    <h3>{{ pose.sanskrit }}</h3>
+  </a>
+</section>
