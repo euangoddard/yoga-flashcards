@@ -126,13 +126,6 @@
       "id": "indudalasana"
     },
     {
-      "sanskrit": "Makarāsana",
-      "searchSanskrit": "Makarasana",
-      "name": "Crocodile",
-      "imageUrl": "http://aboutyoga.in/wp-content/uploads/2013/12/makarasana.jpg",
-      "id": "makarasana"
-    },
-    {
       "sanskrit": "Lāsyāsana",
       "searchSanskrit": "Lasyasana",
       "name": "Dancing Pose",
@@ -607,6 +600,13 @@
       "searchSanskrit": "Parsva Bakasana",
       "imageUrl": "https://www.yogajournal.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cg_faces:center%2Cq_auto:good%2Cw_620/MTQ3MTU1MDYzMTE3MTk0NzAy/32yp_291_2199_gn_bjk2.jpg",
       "id": "parsva-bakasana"
+    },
+    {
+      "name": "Side Lunge",
+      "sanskrit": "Skandasana",
+      "searchSanskrit": "Skandasana",
+      "imageUrl": "https://images-s3.yogainternational.com/assets/content/cache/made/assets/content/cache/remote/http_s3.amazonaws.com/images-s3.yogainternational.com/assets/content/articles/SIDE-LUNGE-YOGA-POSE-69_800_450auto_int.jpg",
+      "id": "skandasana"
     },
     {
       "name": "Side Plank Pose",
