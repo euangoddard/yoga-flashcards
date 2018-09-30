@@ -52,3 +52,25 @@
     color: material-color($theme-primary, 100);
   }
 }
+
+.update-notice {
+  position: fixed;
+  bottom: $footer-size + 16px;
+  left: 1rem;
+  background: material-color(green, A700);
+  color: #fff;
+  padding: 1rem;
+  @include raised-1;
+}
+
+.update-button {
+  appearance: none;
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: inherit;
+  color: material-color($theme-primary, 900);
+  margin-left: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+}

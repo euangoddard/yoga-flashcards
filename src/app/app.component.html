@@ -13,3 +13,7 @@
     <a routerLink="/glossary" routerLinkActive="active" class="footer-link">Glossary</a>
   </nav>
 </footer>
+
+<aside class="update-notice" *ngIf="isNewVersionAvailable$ | async">
+  A new version is available <button class="update-button" type="button" (click)="reload()">Reload</button>
+</aside>
