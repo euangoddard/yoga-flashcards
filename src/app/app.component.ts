@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
   readonly isNewVersionAvailable$: Observable<boolean>;
 
   constructor(private updates: SwUpdate) {
-    if (environment.production) {
+    if (this.updates.isEnabled) {
       this.isNewVersionAvailable$ = this.updates.available.pipe(
         mapTo(true),
         startWith(false),
@@ -24,12 +24,14 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (environment.production) {
+    if (this.updates.isEnabled) {
       this.updates.checkForUpdate();
     }
   }
 
   reload(): void {
-    document.location.reload();
+    this.updates.activateUpdate().then(() => {
+      location.reload();
+    });
   }
 }
