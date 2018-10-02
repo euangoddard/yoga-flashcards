@@ -43,6 +43,42 @@ yf-poses {
   cursor: grabbing;
 }
 
+$pose-nav-size: 4rem;
+
+.pose-nav {
+  position: absolute;
+  background: #fff;
+  @include raised-1;
+  width: $pose-nav-size;
+  height: $pose-nav-size;
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: box-shadow 0.15s ease;
+
+  top: calc(50vh - #{$pose-nav-size});
+
+  cursor: pointer;
+
+  &:hover {
+    @include raised-2;
+  }
+
+  path:first-child {
+    fill: material-color($theme-primary, 900);
+  }
+}
+
+.pose-nav--left {
+  left: calc(50% - #{$width-cap/2} - 1rem - #{$pose-nav-size});
+}
+
+.pose-nav--right {
+  right: calc(50% - #{$width-cap/2} - 1rem - #{$pose-nav-size});
+}
+
 .poses-wrapper {
   transform: translateX(-1 * percentage(1/3));
 }
