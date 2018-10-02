@@ -1,10 +1,17 @@
 {
   "poses": [
     {
+      "name": "Arm-pressing Posture",
+      "sanskrit": "Bhujapīḍāsana",
+      "searchSanskrit": "Bhujapidasana",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Bhujapidasana_Yoga-Asana_Nina-Mel.jpg/600px-Bhujapidasana_Yoga-Asana_Nina-Mel.jpg",
+      "id": "bhujapidasana"
+    },
+    {
       "name": "Bharadvaja's Twist",
       "sanskrit": "Bharadvājāsana",
       "searchSanskrit": "Bharadvajasana",
-      "imageUrl": "https://www.yogajournal.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cg_faces:center%2Cq_auto:good%2Cw_620/MTQ3MTUyNzM1NTEzMzU2MDc5/twistyp_292_00941_bjk.jpg",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Mr-yoga-bharadvajas-twist.jpg/600px-Mr-yoga-bharadvajas-twist.jpg",
       "id": "bharadvajasana"
     },
     {
@@ -18,7 +25,7 @@
       "name": "Boat Pose",
       "sanskrit": "Nāvāsana",
       "searchSanskrit": "Navasana",
-      "imageUrl": "https://www.yogajournal.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cg_faces:center%2Cq_auto:good%2Cw_620/MTQ3MTU0NDA5MjA4NDI0MjM5/editedboathp_292_8_bjk.jpg",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Paripurna-Navasana_Yoga-Asana_Nina-Mel.jpg/600px-Paripurna-Navasana_Yoga-Asana_Nina-Mel.jpg",
       "id": "navasana"
     },
     {
@@ -32,7 +39,7 @@
       "name": "Bow Pose",
       "sanskrit": "Dhanurāsana",
       "searchSanskrit": "Dhanurasana",
-      "imageUrl": "https://www.yogajournal.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cg_faces:center%2Cq_auto:good%2Cw_620/MTQ3MTU2OTM0NjQ5MTk0Mjg3/3enneagram_289_1380_bjk.jpg",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Dhanurasana_Yoga-Asana_Nina-Mel.jpg/600px-Dhanurasana_Yoga-Asana_Nina-Mel.jpg",
       "id": "dhanurasana"
     },
     {
@@ -46,7 +53,7 @@
       "name": "Camel Pose",
       "sanskrit": "Uṣṭrāsana",
       "searchSanskrit": "Ustrasana",
-      "imageUrl": "https://www.yogajournal.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cg_faces:center%2Cq_auto:good%2Cw_620/MTQ3MTU2ODg3NDA0NTU0MDMx/3enneagram_289_1349_bjk.jpg",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Ustrasana_Yoga-Asana_Nina-Mel.jpg/600px-Ustrasana_Yoga-Asana_Nina-Mel.jpg",
       "id": "ustrasana"
     },
     {
@@ -60,7 +67,7 @@
       "name": "Chair Pose",
       "sanskrit": "Utkaṭāsana",
       "searchSanskrit": "Utkatasana",
-      "imageUrl": "https://www.yogajournal.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cg_faces:center%2Cq_auto:good%2Cw_620/MTQ3MTUyNzM1MjQ1NDQ0NTU4/hp_292_267_bjk.jpg",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Utkatasana_Yoga-Asana_Nina-Mel.jpg/480px-Utkatasana_Yoga-Asana_Nina-Mel.jpg",
       "id": "utkatasana"
     },
     {
@@ -74,7 +81,7 @@
       "name": "Cobra Pose",
       "sanskrit": "Bhujaṅgāsana",
       "searchSanskrit": "Bhujangasana",
-      "imageUrl": "https://www.yogajournal.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cg_faces:center%2Cq_auto:good%2Cw_620/MTQ3MTU3MjczOTUxNjEwMzE4/3yp_287_6710_gn_bjk.jpg",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Bhujangasana_Yoga-Asana_Nina-Mel.jpg/625px-Bhujangasana_Yoga-Asana_Nina-Mel.jpg",
       "id": "bhujangasana"
     },
     {
@@ -102,7 +109,7 @@
       "name": "Cow Face Pose",
       "sanskrit": "Gomukhāsana",
       "searchSanskrit": "Gomukhasana",
-      "imageUrl": "https://www.yogajournal.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cg_faces:center%2Cq_auto:good%2Cw_620/MTQ2MTgwNjczMjk0Mzc4NDI5/gomukhasana.jpg",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Gomukhasana_Yoga-Asana_Nina-Mel.jpg/600px-Gomukhasana_Yoga-Asana_Nina-Mel.jpg",
       "id": "gomukhasana"
     },
     {
@@ -152,7 +159,7 @@
       "name": "Eagle Pose",
       "sanskrit": "Garuḍāsana",
       "searchSanskrit": "Garudasana",
-      "imageUrl": "https://www.yogajournal.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cg_faces:center%2Cq_auto:good%2Cw_620/MTQ3MTUyNzM1MjQ1MDUxMzQy/eaglehp2_292_37370_cmyk.jpg",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Garudasana_Yoga-Asana_Nina-Mel.jpg/600px-Garudasana_Yoga-Asana_Nina-Mel.jpg",
       "id": "garudasana"
     },
     {
@@ -227,14 +234,14 @@
       "name": "Fish Pose",
       "sanskrit": "Matsyāsana",
       "searchSanskrit": "Matsyasana",
-      "imageUrl": "https://www.yogajournal.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cg_faces:center%2Cq_auto:good%2Cw_620/MTQ3MTU3MDAzOTA1NTQxNTgy/32enneagram_289_1419_bjk.jpg",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Matsyasana_Yoga-Asana_Nina-Mel.jpg/600px-Matsyasana_Yoga-Asana_Nina-Mel.jpg",
       "id": "matsyasana"
     },
     {
       "name": "Four-Limbed Staff Pose",
       "sanskrit": "Caturaṅga Daṇḍāsana",
       "searchSanskrit": "Chaturanga Dandasana",
-      "imageUrl": "https://www.yogajournal.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cg_faces:center%2Cq_auto:good%2Cw_620/MTQ3MTU0MzUzMTA1NDEzOTM1/edit3chaturangahp2_292_37434_cmyk.jpg",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Chaturanga-Dandasana_low_Yoga-Asana_Nina-Mel.jpg/632px-Chaturanga-Dandasana_low_Yoga-Asana_Nina-Mel.jpg",
       "id": "chaturanga-dandasana"
     },
     {
@@ -269,7 +276,7 @@
       "name": "Half Lord of the Fishes Pose",
       "sanskrit": "Ardha Matsyendrāsana",
       "searchSanskrit": "Ardha Matsyendrasana",
-      "imageUrl": "https://www.yogajournal.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cg_faces:center%2Cq_auto:good%2Cw_620/MTQ2MTgwNzY4NTc5Mzk3MTUy/half-lord-of-the-fishes-pose.jpg",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Ardha-Matsyendrasana_Yoga-Asana_Nina-Mel.jpg/600px-Ardha-Matsyendrasana_Yoga-Asana_Nina-Mel.jpg",
       "id": "ardha-matsyendrasana"
     },
     {
@@ -290,7 +297,7 @@
       "name": "Half Moon Pose",
       "sanskrit": "Ardha Candrāsana",
       "searchSanskrit": "Ardha Candrasana",
-      "imageUrl": "https://www.yogajournal.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cg_faces:center%2Cq_auto:good%2Cw_620/MTQ3MTU0OTQxNTE2MTMwMDk1/2hp_291_1860_gn_bjk.jpg",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Ardha-Chandrasana_Yoga-Asana_Nina-Mel.jpg/630px-Ardha-Chandrasana_Yoga-Asana_Nina-Mel.jpg",
       "id": "ardha-chandrasana"
     },
     {
@@ -311,7 +318,7 @@
       "name": "Head-to-Knee Forward Bend",
       "sanskrit": "Jānu Śīrṣāsana",
       "searchSanskrit": "Janu Sirsasana",
-      "imageUrl": "https://www.yogajournal.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cg_faces:center%2Cq_auto:good%2Cw_620/MTQ3MTU0NzQyMDY4NDU0ODYy/promoyp_292_00990_bjk.jpg",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Janusirsasana_Yoga-Asana_Nina-Mel.jpg/600px-Janusirsasana_Yoga-Asana_Nina-Mel.jpg",
       "id": "janu-sirsasana"
     },
     {
@@ -353,7 +360,7 @@
       "name": "Legs-Up-the-Wall Pose",
       "sanskrit": "Viparītakaraṇi",
       "searchSanskrit": "Viparitakarani",
-      "imageUrl": "https://www.yogajournal.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cg_faces:center%2Cq_auto:good%2Cw_620/MTQ2MTgwNzQ5NTE5OTU1Mzg5/leah-cullis-performs-legs-up-the-wall-pose.jpg",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Viparita-Karani_Yoga-Asana_Nina-Mel.jpg/600px-Viparita-Karani_Yoga-Asana_Nina-Mel.jpg",
       "id": "viparitakarani"
     },
     {
@@ -374,7 +381,7 @@
       "name": "Locust Pose",
       "sanskrit": "Śalabhāsana",
       "searchSanskrit": "Salabhasana",
-      "imageUrl": "https://www.yogajournal.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cg_faces:center%2Cq_auto:good%2Cw_620/MTQ3MTc4MDgzNjA1MDMwNzAz/2anatomy_278_01_fnl.jpg",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Salabhasana_Yoga-Asana_Nina-Mel.jpg/625px-Salabhasana_Yoga-Asana_Nina-Mel.jpg",
       "id": "salabhasana"
     },
     {
@@ -392,13 +399,6 @@
       "id": "natarajasana"
     },
     {
-      "sanskrit": "Padmāsana in Śīrṣāsana",
-      "searchSanskrit": "Padmasana in Sirsasana",
-      "name": "Lotus in Headstand",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Mr-yoga-lotus-headstand7b.jpg/600px-Mr-yoga-lotus-headstand7b.jpg",
-      "id": "padmasana-in-sirsasana"
-    },
-    {
       "sanskrit": "Padmāsana",
       "searchSanskrit": "Padmasana",
       "name": "Lotus Pose",
@@ -411,6 +411,13 @@
       "name": "Lotus Pose in Peacock Pose",
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Mr-yoga-lotus-peacock.jpg/600px-Mr-yoga-lotus-peacock.jpg",
       "id": "padmasana-in-mayurasana"
+    },
+    {
+      "sanskrit": "Padmāsana in Śīrṣāsana",
+      "searchSanskrit": "Padmasana in Sirsasana",
+      "name": "Lotus in Headstand",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Mr-yoga-lotus-headstand7b.jpg/600px-Mr-yoga-lotus-headstand7b.jpg",
+      "id": "padmasana-in-sirsasana"
     },
     {
       "name": "Low Lunge",
@@ -458,7 +465,7 @@
       "name": "Noose Pose",
       "sanskrit": "Pāśāsana",
       "searchSanskrit": "Pasasana",
-      "imageUrl": "https://www.yogajournal.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cg_faces:center%2Cq_auto:good%2Cw_620/MTQ2MTgwNjcyMjA4MzE1OTM2/noose-pose-pasasana.jpg",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Pasasana_Yoga-Asana_Nina-Mel.jpg/600px-Pasasana_Yoga-Asana_Nina-Mel.jpg",
       "id": "pasasana"
     },
     {
@@ -537,6 +544,13 @@
       "name": "Rabbit Pose",
       "imageUrl": "https://i2.wp.com/www.theayurveda.org/wp-content/uploads/2015/10/Sasakasana-for-anger-management.jpg?fit=750%2C500&ssl=1",
       "id": "sasakasana"
+    },
+    {
+      "sanskrit": "Supta Vīrāsana",
+      "searchSanskrit": "Supta Virasana",
+      "name": "Reclining Hero",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Supta-Virasana_Yoga-Asana_Nina-Mel.jpg/634px-Supta-Virasana_Yoga-Asana_Nina-Mel.jpg",
+      "id": "supta-virasana"
     },
     {
       "sanskrit": "Parivṛtta Nāvāsana",
@@ -724,7 +738,7 @@
       "name": "Tree Pose",
       "sanskrit": "Vṛkṣāsana",
       "searchSanskrit": "Vrksasana",
-      "imageUrl": "https://www.yogajournal.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cg_faces:center%2Cq_auto:good%2Cw_620/MTQ3MTU0OTQxNTE2MTk1NjMx/hp_291_1842_gn_bjk.jpg",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Vriksasana_Yoga-Asana_Nina-Mel.jpg/480px-Vriksasana_Yoga-Asana_Nina-Mel.jpg",
       "id": "vrksasana"
     },
     {
