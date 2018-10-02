@@ -1,5 +1,5 @@
-<div *ngIf="pose">
+<ng-container *ngIf="pose">
   <h2 class="pose-title">{{ pose.name }}</h2>
   <h3 *ngIf="pose.sanskrit" class="pose-sanskrit">{{ pose.sanskrit }}</h3>
   <img [src]="pose.imageUrl" [alt]="pose.name" class="pose-image">
-</div>
+</ng-container>
