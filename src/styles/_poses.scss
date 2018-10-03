@@ -47,29 +47,39 @@ $pose-nav-size: 4rem;
 
 .pose-nav {
   position: absolute;
-  background: #fff;
-  @include raised-1;
-  width: $pose-nav-size;
-  height: $pose-nav-size;
-  border-radius: 50%;
+  background: transparent;
 
   display: flex;
   justify-content: center;
   align-items: center;
   transition: box-shadow 0.15s ease;
-
-  top: calc(50vh - #{$pose-nav-size});
+  top: calc(50vh - #{$pose-nav-size / 2});
+  border: none;
 
   cursor: pointer;
 
+  @include large-screen {
+    background: #fff;
+    @include raised-1;
+    width: $pose-nav-size;
+    height: $pose-nav-size;
+    border-radius: 50%;
+  }
+
   &:hover,
   &:focus {
-    @include raised-2;
+    @include large-screen {
+      @include raised-2;
+    }
+
+    outline: none;
   }
 
   &:active {
     border: none;
-    @include raised-1;
+    @include large-screen {
+      @include raised-1;
+    }
   }
 
   path:first-child {
@@ -78,11 +88,17 @@ $pose-nav-size: 4rem;
 }
 
 .pose-nav--left {
-  left: calc(50% - #{$width-cap/2} - 1rem - #{$pose-nav-size});
+  left: 0;
+  @include large-screen {
+    left: calc(50% - #{$width-cap/2} - 1rem - #{$pose-nav-size});
+  }
 }
 
 .pose-nav--right {
-  right: calc(50% - #{$width-cap/2} - 1rem - #{$pose-nav-size});
+  right: 0;
+  @include large-screen {
+    right: calc(50% - #{$width-cap/2} - 1rem - #{$pose-nav-size});
+  }
 }
 
 .poses-wrapper {

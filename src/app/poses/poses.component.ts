@@ -71,6 +71,9 @@ export class PosesComponent implements OnInit, AfterViewInit, OnChanges, OnDestr
   @HostListener('mousedown', ['$event'])
   @HostListener('touchstart', ['$event'])
   startDrag(event: TouchEvent | MouseEvent) {
+    if (['BUTTON', 'svg'].includes(event.srcElement!.nodeName)) {
+      return;
+    }
     this.queuedOffsets = [];
     event.preventDefault();
     this.lastPointerX = getXFromEvent(event);
