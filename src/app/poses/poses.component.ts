@@ -210,9 +210,13 @@ export class PosesComponent implements OnInit, AfterViewInit, OnChanges, OnDestr
 }
 
 function getXFromEvent(event: TouchEvent | MouseEvent): number {
-  if (event instanceof TouchEvent) {
+  if (isTouchEvent(event)) {
     return event.touches[0].pageX;
   } else {
     return event.pageX;
   }
+}
+
+function isTouchEvent(event: TouchEvent | MouseEvent): event is TouchEvent {
+  return 'touches' in event;
 }
