@@ -62,8 +62,14 @@ $pose-nav-size: 4rem;
 
   cursor: pointer;
 
-  &:hover {
+  &:hover,
+  &:focus {
     @include raised-2;
+  }
+
+  &:active {
+    border: none;
+    @include raised-1;
   }
 
   path:first-child {

@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { SwUpdate } from '@angular/service-worker';
 import { Observable, of } from 'rxjs';
 import { mapTo, startWith } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'yoga-flashcards',

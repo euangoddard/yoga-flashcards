@@ -104,16 +104,25 @@ export class PosesComponent implements OnInit, AfterViewInit, OnChanges, OnDestr
 
   @HostListener('window:keyup', ['$event.keyCode'])
   moveWithKeys(keyCode: number): void {
-    const width = this.widthSubject.getValue();
     if ([32, 39].includes(keyCode)) {
-      this.snapToPose(-1 * width);
+      this.animateToNextPose();
     } else if (keyCode === 37) {
-      this.snapToPose(width);
+      this.animateToPreviousPose();
     }
   }
 
   get transform(): string {
     return `translate3d(${this.offsetX}px, 0, 0)`;
+  }
+
+  animateToPreviousPose(): void {
+    const width = this.widthSubject.getValue();
+    this.snapToPose(width);
+  }
+
+  animateToNextPose(): void {
+    const width = this.widthSubject.getValue();
+    this.snapToPose(-1 * width);
   }
 
   private getRelativePose(delta: 1 | -1): Pose {
